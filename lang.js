@@ -16,6 +16,11 @@
     UY: 'es', PR: 'es', GQ: 'es',
     US: 'en'
   };
+  // Every European country (EU + EEA/EFTA + UK + microstates + Balkans + Eastern Europe + Caucasus/TR/CY).
+  // Visitors from these get EUR prices and EUR Stripe links, on any language version of the site.
+  var EUROPE = ('AD AL AM AT AZ BA BE BG BY CH CY CZ DE DK EE ES FI FO FR GB GE GG GI GR HR HU IE IM IS IT JE ' +
+    'LI LT LU LV MC MD ME MK MT NL NO PL PT RO RS RU SE SI SJ SK SM TR UA VA XK AX').split(' ');
+  function isEurope(cc) { return !!cc && typeof cc === 'string' && EUROPE.indexOf(cc.trim().toUpperCase()) !== -1; }
   var BOT_RE = /bot|crawl|spider|slurp|bingpreview|facebookexternalhit/i;
 
   function langFromCountry(cc) {
@@ -46,7 +51,7 @@
     return langFromCountry(country) || langFromBrowser(browserLangs) || 'en';
   }
 
-  var api = { LANGS: LANGS, COUNTRY_LANG: COUNTRY_LANG, langFromCountry: langFromCountry,
+  var api = { LANGS: LANGS, EUROPE: EUROPE, isEurope: isEurope, COUNTRY_LANG: COUNTRY_LANG, langFromCountry: langFromCountry,
     langFromBrowser: langFromBrowser, isBot: isBot, langFromPath: langFromPath, urlFor: urlFor, decide: decide };
   if (typeof module !== 'undefined' && module.exports) { module.exports = api; return; }
 
@@ -72,9 +77,15 @@
       .then(function (r) { return r.json(); })
       .then(function (j) { clearTimeout(t); if (!j || !j.country) throw 0; return j.country; });
   }
-  function lookupCountry() { // primary then fallback, total ~1.5 s budget
-    return fetchCountry(GEO[0], 900).catch(function () { return fetchCountry(GEO[1], 600); }).catch(function () { return null; });
+  var countryP = null;
+  function lookupCountry() { // primary then fallback, total ~1.5 s budget; one lookup per session (sessionStorage)
+    if (countryP) return countryP;
+    try { var c = sessionStorage.getItem('geo_cc'); if (c) return (countryP = Promise.resolve(c === '-' ? null : c)); } catch (e) {}
+    countryP = fetchCountry(GEO[0], 900).catch(function () { return fetchCountry(GEO[1], 600); }).catch(function () { return null; })
+      .then(function (cc) { try { sessionStorage.setItem('geo_cc', cc || '-'); } catch (e) {} return cc; });
+    return countryP;
   }
+  root.origemGeo = { country: lookupCountry, isEurope: isEurope };
   function go(lang) {
     var target = urlFor(lang, location.pathname) + location.hash;
     if (target !== location.pathname + location.hash) location.replace(target);

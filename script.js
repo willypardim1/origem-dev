@@ -5,19 +5,30 @@ const STRIPE_LINKS_USD = {
   unlimited: 'https://buy.stripe.com/3cIfZhgX35Ive65bHMds401', // Unlimited Graphics $490/mo
   pro: 'https://buy.stripe.com/4gM7sLdKRgn92nn6nsds402'              // Pro $590/mo
 };
-// TODO(EUR): create EUR prices (€390/€490/€590 per month) + Payment Links in Stripe and paste them here.
-// Until then, EUR plan buttons fall back to the #contact form (anything not https://buy.stripe.com/... is ignored).
+// EUR links (€390/€490/€590 per month). Used on /pt/ /fr/ /es/ and for visitors in any European country.
 const STRIPE_LINKS_EUR = {
-  social: 'TODO_EUR_SOCIAL_LINK',       // Social Media €390/mo
-  unlimited: 'TODO_EUR_UNLIMITED_LINK', // Unlimited Graphics €490/mo
-  pro: 'TODO_EUR_PRO_LINK'              // Pro €590/mo
+  social: 'https://buy.stripe.com/4gMeVd5eldaXbXXdPUds403',     // Social Media €390/mo
+  unlimited: 'https://buy.stripe.com/6oUbJ18qxdaX0ffdPUds404',  // Unlimited Graphics €490/mo
+  pro: 'https://buy.stripe.com/00w5kDeOV5Ivgedh26ds405'         // Pro €590/mo
 };
-const STRIPE_LINKS = document.documentElement.lang === 'en' ? STRIPE_LINKS_USD : STRIPE_LINKS_EUR;
-document.querySelectorAll('[data-plan]').forEach(a=>{
-  const url=STRIPE_LINKS[a.dataset.plan];
-  if(url && /^https:\/\/(buy\.stripe\.com|checkout\.stripe\.com)\//.test(url)){a.href=url;a.rel='noopener'}
-  else a.href='#contact'; // placeholder → scroll to consultation form
-});
+const PRICES = { USD: { social: '$390', unlimited: '$490', pro: '$590' }, EUR: { social: '€390', unlimited: '€490', pro: '€590' } };
+function applyCurrency(cur) {
+  const links = cur === 'EUR' ? STRIPE_LINKS_EUR : STRIPE_LINKS_USD;
+  document.querySelectorAll('[data-plan]').forEach(a => {
+    const url = links[a.dataset.plan];
+    if (url && /^https:\/\/(buy\.stripe\.com|checkout\.stripe\.com)\//.test(url)) { a.href = url; a.rel = 'noopener'; }
+    else a.href = '#contact'; // placeholder → scroll to consultation form
+    const amt = a.closest('.plan') && a.closest('.plan').querySelector('.amt');
+    if (amt && document.documentElement.lang === 'en') amt.textContent = PRICES[cur][a.dataset.plan];
+  });
+  const sec = document.querySelector('.secure');
+  if (sec && document.documentElement.lang === 'en') sec.textContent = sec.textContent.replace(/in (USD|EUR)/, 'in ' + cur);
+}
+// Page default: English = USD, pt/fr/es = EUR. English visitors in Europe switch to EUR after the geo lookup.
+applyCurrency(document.documentElement.lang === 'en' ? 'USD' : 'EUR');
+if (document.documentElement.lang === 'en' && document.querySelector('[data-plan]') && window.origemGeo) {
+  window.origemGeo.country().then(cc => { if (window.origemGeo.isEurope(cc)) applyCurrency('EUR'); }).catch(() => {});
+}
 const b=document.querySelector('.menu-btn'),m=document.getElementById('menu');
 if(b){b.addEventListener('click',()=>{const o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
 m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{m.classList.remove('open');b.setAttribute('aria-expanded',false)}));}
