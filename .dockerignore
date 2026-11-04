@@ -1,0 +1,5 @@
+src/
+locales/
+tests/
+build-i18n.py
+.git

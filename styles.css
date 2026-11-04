@@ -93,3 +93,15 @@ details{border-bottom:1px solid #14213d22;padding:18px 0}summary{cursor:pointer;
 }
 .logo{gap:0}
 .logo .dot{margin-right:18px}
+
+/* ===== Language selector ===== */
+.lang-sel{display:inline-flex;gap:4px;align-items:center}
+.lang-sel a{display:inline-flex;align-items:center;gap:4px;padding:4px 7px;border-radius:999px;font-size:.8rem;font-weight:600;text-decoration:none;opacity:.75;border:1px solid transparent;line-height:1}
+.lang-sel a:hover,.lang-sel a:focus-visible{opacity:1;border-color:currentColor}
+.lang-sel a:focus-visible{outline:2px solid #ff6b4a;outline-offset:2px}
+.lang-sel a[aria-current="true"]{opacity:1;border-color:#ff6b4a}
+.lang-sel .flag{font-size:1rem}
+.nav .lang-sel a{color:#d9d6cf}
+.foot .lang-sel{margin:14px 0 6px;flex-wrap:wrap}
+.ty .lang-sel{justify-content:center;margin:18px 0}
+@media(max-width:900px){nav .lang-sel{justify-content:flex-start;padding-top:6px}}

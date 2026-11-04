@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="{{@htmllang}}">
+<head>
+<!-- Stripe Payment Links live in script.js (STRIPE_LINKS). See STRIPE-SETUP.md. -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{meta.title}}</title>
+<meta name="description" content="{{meta.description}}">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+{{@head}}
+<script src="/lang.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">{{nav.skip}}</a>
+<header class="nav" id="top">
+  <div class="wrap nav-in">
+    <!-- PLACEHOLDER: replace text logo with your logo image -->
+    <a href="#" class="logo" aria-label="{{nav.home_aria}}"><span class="dot"></span>origem<span>.dev</span></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="{{nav.menu_aria}}">☰</button>
+    <nav id="menu" aria-label="Main">
+      <a href="#services">{{nav.services}}</a><a href="#website">{{nav.website}}</a><a href="#pricing">{{nav.pricing}}</a><a href="#process">{{nav.process}}</a><a href="#faq">{{nav.faq}}</a>
+      <a href="#contact" class="btn btn-sm">{{nav.cta}}</a>
+      {{@selector}}
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero">
+  <!-- SAMPLE PLACEHOLDERS: these sermon-series posters (assets/*.svg) are original mock-ups; replace with real church work later. -->
+  <div class="poster-grid" aria-hidden="true"><div class="pcol pcol0"><img src="/assets/anchored.svg" alt="" width="400" height="500"><img src="/assets/fasting.svg" alt="" width="400" height="500"><img src="/assets/genesis.svg" alt="" width="400" height="500"><img src="/assets/kingdom.svg" alt="" width="400" height="500"><img src="/assets/anchored.svg" alt="" width="400" height="500"><img src="/assets/fasting.svg" alt="" width="400" height="500"><img src="/assets/genesis.svg" alt="" width="400" height="500"><img src="/assets/kingdom.svg" alt="" width="400" height="500"></div><div class="pcol pcol1"><img src="/assets/breath.svg" alt="" width="400" height="500"><img src="/assets/rooted.svg" alt="" width="400" height="500"><img src="/assets/advent.svg" alt="" width="400" height="500"><img src="/assets/risen.svg" alt="" width="400" height="500"><img src="/assets/breath.svg" alt="" width="400" height="500"><img src="/assets/rooted.svg" alt="" width="400" height="500"><img src="/assets/advent.svg" alt="" width="400" height="500"><img src="/assets/risen.svg" alt="" width="400" height="500"></div><div class="pcol pcol2"><img src="/assets/mountain.svg" alt="" width="400" height="500"><img src="/assets/grace.svg" alt="" width="400" height="500"><img src="/assets/unshaken.svg" alt="" width="400" height="500"><img src="/assets/light.svg" alt="" width="400" height="500"><img src="/assets/mountain.svg" alt="" width="400" height="500"><img src="/assets/grace.svg" alt="" width="400" height="500"><img src="/assets/unshaken.svg" alt="" width="400" height="500"><img src="/assets/light.svg" alt="" width="400" height="500"></div></div>
+  <div class="hero-shade" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <p class="pill">{{hero.pill}}</p>
+      <h1>{{hero.h1}}</h1>
+      <p class="lead">{{hero.lead}}</p>
+      <div class="cta-row"><a href="#contact" class="btn">{{hero.cta1}}</a><a href="#pricing" class="btn btn-ghost">{{hero.cta2}}</a></div>
+      <ul class="checks"><li>{{hero.check1}}</li><li>{{hero.check2}}</li><li>{{hero.check3}}</li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="marquee" aria-label="{{marquee.aria}}">
+  <div class="track">
+    <span>{{mq.1}}</span><span>{{mq.2}}</span><span>{{mq.3}}</span><span>{{mq.4}}</span><span>{{mq.5}}</span><span>{{mq.6}}</span><span>{{mq.7}}</span><span>{{mq.8}}</span><span>{{mq.9}}</span><span>{{mq.10}}</span>
+    <span aria-hidden="true">{{mq.1}}</span><span aria-hidden="true">{{mq.2}}</span><span aria-hidden="true">{{mq.3}}</span><span aria-hidden="true">{{mq.4}}</span><span aria-hidden="true">{{mq.5}}</span><span aria-hidden="true">{{mq.6}}</span><span aria-hidden="true">{{mq.7}}</span><span aria-hidden="true">{{mq.8}}</span><span aria-hidden="true">{{mq.9}}</span><span aria-hidden="true">{{mq.10}}</span>
+  </div>
+</section>
+
+<section id="services" class="sec">
+  <div class="wrap">
+    <p class="eyebrow">{{nav.services}}</p>
+    <h2>{{svc.h2}}</h2>
+    <div class="grid g3">
+      <article class="tile"><h3>{{svc.t1}}</h3><p>{{svc.p1}}</p></article>
+      <article class="tile"><h3>{{svc.t2}}</h3><p>{{svc.p2}}</p></article>
+      <article class="tile"><h3>{{svc.t3}}</h3><p>{{svc.p3}}</p></article>
+      <article class="tile"><h3>{{svc.t4}}</h3><p>{{svc.p4}}</p></article>
+      <article class="tile"><h3>{{svc.t5}}</h3><p>{{svc.p5}}</p></article>
+      <article class="tile"><h3>{{svc.t6}}</h3><p>{{svc.p6}}</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="website" class="sec feature">
+  <div class="wrap feature-in">
+    <div>
+      <p class="eyebrow light">{{web.eyebrow}}</p>
+      <h2>{{web.h2}}</h2>
+      <p>{{web.p1}}</p>
+      <p>{{web.p2}}</p>
+      <p class="small-note">{{web.note}}</p>
+    </div>
+    <ul class="feature-list">
+      <li>{{web.f1}}</li>
+      <li>{{web.f2}}</li>
+      <li>{{web.f3}}</li>
+      <li>{{web.f4}}</li>
+      <li>{{web.f5}}</li>
+    </ul>
+  </div>
+</section>
+
+<section id="pricing" class="sec">
+  <div class="wrap">
+    <p class="eyebrow">{{nav.pricing}}</p>
+    <h2>{{price.h2}}</h2>
+    <p class="sub">{{price.sub}}</p>
+    <!-- PLACEHOLDER PRICES: edit the plan names, prices and features below before launch -->
+    <div class="grid g3 plans">
+      <article class="plan">
+        <h3>Social Media</h3>
+        <p class="price"><span class="amt">{{price.social}}</span>{{price.per}}</p><!-- PLACEHOLDER price -->
+        <p>{{plan.s.desc}}</p>
+        <ul><li>{{plan.s.l1}}</li><li>{{plan.s.l2}}</li><li>{{plan.s.l3}}</li><li class="no">{{plan.s.l4}}</li></ul>
+        <a href="#contact" data-plan="social" class="btn btn-ghost">{{plan.cta}}</a>
+      </article>
+      <article class="plan popular">
+        <span class="badge">{{plan.badge}}</span>
+        <h3>Unlimited Graphics</h3>
+        <p class="price"><span class="amt">{{price.unlimited}}</span>{{price.per}}</p><!-- PLACEHOLDER price -->
+        <p>{{plan.u.desc}}</p>
+        <ul><li>{{plan.u.l1}}</li><li>{{plan.u.l2}}</li><li>{{plan.u.l3}}</li><li>{{plan.u.l4}}</li></ul>
+        <a href="#contact" data-plan="unlimited" class="btn">{{plan.cta}}</a>
+      </article>
+      <article class="plan">
+        <h3>Pro</h3>
+        <p class="price"><span class="amt">{{price.pro}}</span>{{price.per}}</p><!-- PLACEHOLDER price -->
+        <p>{{plan.p.desc}}</p>
+        <ul><li>{{plan.p.l1}}</li><li>{{plan.p.l2}}</li><li>{{plan.p.l3}}</li><li>{{plan.p.l4}}</li></ul>
+        <a href="#contact" data-plan="pro" class="btn btn-ghost">{{plan.cta}}</a>
+      </article>
+    </div>
+    <p class="secure">{{price.secure}}</p>
+  </div>
+</section>
+
+<section id="process" class="sec alt">
+  <div class="wrap">
+    <p class="eyebrow">{{proc.eyebrow}}</p>
+    <h2>{{proc.h2}}</h2>
+    <ol class="steps">
+      <li><span>1</span><h3>{{proc.t1}}</h3><p>{{proc.p1}}</p></li>
+      <li><span>2</span><h3>{{proc.t2}}</h3><p>{{proc.p2}}</p></li><!-- PLACEHOLDER: confirm turnaround -->
+      <li><span>3</span><h3>{{proc.t3}}</h3><p>{{proc.p3}}</p></li>
+      <li><span>4</span><h3>{{proc.t4}}</h3><p>{{proc.p4}}</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <p class="eyebrow">{{cmp.eyebrow}}</p>
+    <h2>{{cmp.h2}}</h2>
+    <div class="table-wrap">
+    <table>
+      <caption class="sr">{{cmp.caption}}</caption>
+      <thead><tr><th scope="col"></th><th scope="col" class="us">origem.dev</th><th scope="col">{{cmp.c2}}</th><th scope="col">{{cmp.c3}}</th><th scope="col">{{cmp.c4}}</th><th scope="col">{{cmp.c5}}</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">{{cmp.r1}}</th><td class="us">✓</td><td>{{cmp.salary}}</td><td>{{cmp.perproj}}</td><td>{{cmp.retainers}}</td><td>✓</td></tr>
+        <tr><th scope="row">{{cmp.r2}}</th><td class="us">✓</td><td>✓</td><td>{{cmp.varies}}</td><td>{{cmp.slow}}</td><td>{{cmp.yourtime}}</td></tr>
+        <tr><th scope="row">{{cmp.r3}}</th><td class="us">✓</td><td>✓</td><td>{{cmp.varies}}</td><td>{{cmp.rarely}}</td><td>—</td></tr>
+        <tr><th scope="row">{{cmp.r4}}</th><td class="us">✓</td><td>✓</td><td>{{cmp.limited}}</td><td>{{cmp.limited}}</td><td>—</td></tr>
+        <tr><th scope="row">{{cmp.r5}}</th><td class="us">✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><th scope="row">{{cmp.r6}}</th><td class="us">✓</td><td>—</td><td>✓</td><td>{{cmp.contracts}}</td><td>✓</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt">
+  <div class="wrap">
+    <p class="eyebrow">{{tst.eyebrow}}</p>
+    <h2>{{tst.h2}}</h2>
+    <!-- PLACEHOLDER: add real testimonials from real clients only -->
+    <p class="placeholder">{{tst.p}}</p>
+  </div>
+</section>
+
+<section class="sec guarantee">
+  <div class="wrap g-in">
+    <div class="seal" aria-hidden="true">14<small>{{g.days}}</small></div>
+    <div>
+      <h2>{{g.h2}}</h2>
+      <p>{{g.p}}</p><!-- PLACEHOLDER: confirm refund policy terms -->
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="sec">
+  <div class="wrap narrow">
+    <p class="eyebrow">{{nav.faq}}</p>
+    <h2>{{faq.h2}}</h2>
+    <details><summary>{{faq.q1}}</summary><p>{{faq.a1}}</p></details>
+    <details><summary>{{faq.q2}}</summary><p>{{faq.a2}}</p></details>
+    <details><summary>{{faq.q3}}</summary><p>{{faq.a3}}</p></details>
+    <details><summary>{{faq.q4}}</summary><p>{{faq.a4}}</p></details><!-- PLACEHOLDER: confirm policy -->
+    <details><summary>{{faq.q5}}</summary><p>{{faq.a5}}</p></details>
+    <details><summary>{{faq.q6}}</summary><p>{{faq.a6}}</p></details>
+    <details><summary>{{faq.q7}}</summary><p>{{faq.a7}}</p></details>
+  </div>
+</section>
+
+<section id="contact" class="sec cta">
+  <div class="wrap cta-in">
+    <div>
+      <h2>{{ct.h2}}</h2>
+      <p>{{ct.p}}</p>
+    </div>
+    <!-- PLACEHOLDER: replace mailto with your real form endpoint (Formspree, Netlify Forms, etc.) and email -->
+    <form class="form" action="mailto:origem.devs@gmail.com" method="post" enctype="text/plain">
+      <label>{{ct.name}}<input name="name" required autocomplete="name"></label>
+      <label>{{ct.email}}<input type="email" name="email" required autocomplete="email"></label>
+      <label>{{ct.church}}<input name="church" required></label>
+      <label>{{ct.site}}<input type="url" name="website" placeholder="https://"></label>
+      <label>{{ct.msg}}<textarea name="message" rows="3"></textarea></label>
+      <button class="btn" type="submit">{{ct.submit}}</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <a href="#" class="logo"><span class="dot"></span>origem<span>.dev</span></a>
+    <p>{{foot.tag}}</p>
+    <p><a href="mailto:origem.devs@gmail.com">origem.devs@gmail.com</a></p><!-- PLACEHOLDER email -->
+    {{@selector}}
+    <p class="small">© <span id="yr">2026</span> {{foot.rights}}</p>
+  </div>
+</footer>
+<script src="/script.js"></script>
+</body>
+</html>
