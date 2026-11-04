@@ -46,12 +46,16 @@ def selector(page, code, label):
     items = []
     for c, hl, p, flag, name, short in LANGS:
         ac = ' aria-current="true"' if c == code else ""
-        items.append(f'<li><a href="{url(p, page)}" data-lang="{c}" hreflang="{hl}" lang="{hl}"{ac}>'
-                     f'{FLAGS[c]}<span>{NAMES[c]}</span><span class="chk" aria-hidden="true">✓</span></a></li>')
+        items.append(f'<li><a href="{url(p, page)}" data-lang="{c}" hreflang="{hl}" lang="{hl}"{ac}'
+                     f' title="{NAMES[c]}" aria-label="{NAMES[c]}">{FLAGS[c]}<span class="lc">{short}</span></a></li>')
     return (f'<div class="lang-sel">'
-            f'<button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-controls="{lid}" aria-label="{label}: {cur[4]}">'
-            f'{FLAGS[code]}<span class="lc">{cur[5]}</span><span class="caret" aria-hidden="true">▾</span></button>'
+            f'<button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-controls="{lid}" aria-label="{label}: {cur[4]}" title="{cur[4]}">'
+            f'{FLAGS[code]}<span class="lc">{cur[5]}</span><svg class="caret" viewBox="0 0 10 6" width="9" height="6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>'
             f'<ul class="lang-list" id="{lid}" hidden>' + "".join(items) + "</ul></div>")
+
+def asset_ver(name):
+    import hashlib
+    return hashlib.sha1(open(os.path.join(ROOT, name), "rb").read()).hexdigest()[:8]
 
 def main():
     en = json.load(open(os.path.join(ROOT, "locales", "en.json"), encoding="utf-8"))
@@ -62,6 +66,8 @@ def main():
         for page in PAGES:
             _n[0] = 0
             s = open(os.path.join(ROOT, "src", page), encoding="utf-8").read()
+            for a in ("styles.css", "lang.js", "script.js"):
+                s = s.replace(f'"/{a}"', f'"/{a}?v={asset_ver(a)}"')
             s = s.replace("{{@htmllang}}", hl).replace("{{@head}}", head(page, code))
             while "{{@selector}}" in s:
                 s = s.replace("{{@selector}}", selector(page, code, t["lang.label"]), 1)
