@@ -30,13 +30,28 @@ def head(page, code):
     out.append(f'<link rel="alternate" hreflang="x-default" href="{SITE}{url("/", page)}">')
     return "\n".join(out)
 
+FLAGS = {
+    "en": '<svg class="flag" viewBox="0 0 30 20" width="20" height="14" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zm0 3.08h30v1.54H0zm0 3.08h30v1.54H0zm0 3.08h30v1.54H0zm0 3.08h30v1.54H0zm0 3.08h30v1.54H0zm0 3.08h30V20H0z" fill="#b22234"/><rect width="13" height="10.77" fill="#3c3b6e"/></svg>',
+    "pt": '<svg class="flag" viewBox="0 0 30 20" width="20" height="14" aria-hidden="true"><rect width="30" height="20" fill="#f00"/><rect width="12" height="20" fill="#060"/><circle cx="12" cy="10" r="3.6" fill="#ff0"/><circle cx="12" cy="10" r="2.2" fill="#f00"/></svg>',
+    "fr": '<svg class="flag" viewBox="0 0 30 20" width="20" height="14" aria-hidden="true"><rect width="30" height="20" fill="#ef4135"/><rect width="20" height="20" fill="#fff"/><rect width="10" height="20" fill="#0055a4"/></svg>',
+    "es": '<svg class="flag" viewBox="0 0 30 20" width="20" height="14" aria-hidden="true"><rect width="30" height="20" fill="#aa151b"/><rect y="5" width="30" height="10" fill="#f1bf00"/></svg>',
+}
+NAMES = {"en": "United States (English)", "pt": "Portugal (Português)", "fr": "France (Français)", "es": "España (Español)"}
+_n = [0]
+
 def selector(page, code, label):
+    _n[0] += 1
+    lid = f"lang-list-{_n[0]}"
+    cur = next(l for l in LANGS if l[0] == code)
     items = []
     for c, hl, p, flag, name, short in LANGS:
-        cur = ' aria-current="true"' if c == code else ""
-        items.append(f'<a href="{url(p, page)}" data-lang="{c}" hreflang="{hl}" lang="{hl}" aria-label="{name}" title="{name}"{cur}>'
-                     f'<span class="flag" aria-hidden="true">{flag}</span><span class="lc" aria-hidden="true">{short}</span></a>')
-    return f'<div class="lang-sel" role="group" aria-label="{label}">' + "".join(items) + "</div>"
+        ac = ' aria-current="true"' if c == code else ""
+        items.append(f'<li><a href="{url(p, page)}" data-lang="{c}" hreflang="{hl}" lang="{hl}"{ac}>'
+                     f'{FLAGS[c]}<span>{NAMES[c]}</span><span class="chk" aria-hidden="true">✓</span></a></li>')
+    return (f'<div class="lang-sel">'
+            f'<button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-controls="{lid}" aria-label="{label}: {cur[4]}">'
+            f'{FLAGS[code]}<span class="lc">{cur[5]}</span><span class="caret" aria-hidden="true">▾</span></button>'
+            f'<ul class="lang-list" id="{lid}" hidden>' + "".join(items) + "</ul></div>")
 
 def main():
     en = json.load(open(os.path.join(ROOT, "locales", "en.json"), encoding="utf-8"))
@@ -45,9 +60,12 @@ def main():
         missing = set(en) - set(t)
         if missing: sys.exit(f"{code}.json missing keys: {sorted(missing)}")
         for page in PAGES:
+            _n[0] = 0
             s = open(os.path.join(ROOT, "src", page), encoding="utf-8").read()
             s = s.replace("{{@htmllang}}", hl).replace("{{@head}}", head(page, code))
-            s = s.replace("{{@selector}}", selector(page, code, t["lang.label"])).replace("{{@home}}", prefix)
+            while "{{@selector}}" in s:
+                s = s.replace("{{@selector}}", selector(page, code, t["lang.label"]), 1)
+            s = s.replace("{{@home}}", prefix)
             s = re.sub(r"\{\{([a-z0-9._]+)\}\}", lambda m: t[m.group(1)], s)
             if "{{" in s: sys.exit(f"unresolved placeholder in {code}/{page}")
             outdir = os.path.join(ROOT, prefix.strip("/"))

@@ -96,11 +96,39 @@
       }
     }
   }
+  function closeAll(except) {
+    var bs = document.querySelectorAll('.lang-btn[aria-expanded="true"]');
+    for (var i = 0; i < bs.length; i++) if (bs[i] !== except) setOpen(bs[i], false);
+  }
+  function setOpen(btn, open) {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    var list = document.getElementById(btn.getAttribute('aria-controls'));
+    if (list) list.hidden = !open;
+  }
+  function links(btn) { var l = document.getElementById(btn.getAttribute('aria-controls')); return l ? l.querySelectorAll('a') : []; }
   document.addEventListener('click', function (e) {
+    var btn = e.target.closest && e.target.closest('.lang-btn');
+    if (btn) { var o = btn.getAttribute('aria-expanded') !== 'true'; closeAll(btn); setOpen(btn, o); return; }
     var a = e.target.closest && e.target.closest('.lang-sel a[data-lang]');
+    closeAll(null);
     if (!a) return;
     e.preventDefault();
     save(a.getAttribute('data-lang')); markAuto();
     location.href = urlFor(a.getAttribute('data-lang'), location.pathname) + location.hash;
+  });
+  document.addEventListener('keydown', function (e) {
+    var sel = e.target.closest && e.target.closest('.lang-sel');
+    if (e.key === 'Escape') {
+      var open = document.querySelector('.lang-btn[aria-expanded="true"]');
+      if (open) { setOpen(open, false); open.focus(); }
+      return;
+    }
+    if (!sel) return;
+    var btn = sel.querySelector('.lang-btn'), as = links(btn), idx = Array.prototype.indexOf.call(as, e.target);
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (e.target === btn) { setOpen(btn, true); (e.key === 'ArrowDown' ? as[0] : as[as.length - 1]).focus(); }
+      else if (idx !== -1) as[(idx + (e.key === 'ArrowDown' ? 1 : as.length - 1)) % as.length].focus();
+    } else if (e.key === 'Tab' && idx === as.length - 1 && !e.shiftKey) { setOpen(btn, false); }
   });
 })(this);
