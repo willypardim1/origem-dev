@@ -8,7 +8,7 @@
 <meta name="description" content="Design gráfico por subscrição para igrejas e ministérios. Pedidos ilimitados, entregas rápidas e um site personalizado gratuito para a sua igreja.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=d7dbdf68">
+<link rel="stylesheet" href="/styles.css?v=9023d59a">
 <link rel="canonical" href="https://origem.dev/pt/">
 <link rel="alternate" hreflang="en" href="https://origem.dev/">
 <link rel="alternate" hreflang="pt-PT" href="https://origem.dev/pt/">
@@ -23,8 +23,8 @@
   <div class="wrap nav-in">
     <!-- PLACEHOLDER: replace text logo with your logo image -->
     <a href="#" class="logo" aria-label="Página inicial origem.dev"><span class="dot"></span>origem<span>.dev</span></a>
-    <button class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">☰</button>
-    <nav id="menu" aria-label="Main">
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu" data-label-open="Abrir menu" data-label-close="Fechar menu"><span class="burger" aria-hidden="true"></span></button>
+    <nav id="menu" aria-label="Principal">
       <a href="#services">Serviços</a><a href="#website">Site gratuito</a><a href="#pricing">Preços</a><a href="#process">Processo</a><a href="#faq">Perguntas frequentes</a>
       <a href="#contact" class="btn btn-sm">Marcar chamada gratuita</a>
       <div class="lang-sel"><button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-controls="lang-list-1" aria-label="Idioma: Português (Portugal)" title="Português (Portugal)"><svg class="flag" viewBox="0 0 30 20" width="20" height="14" aria-hidden="true"><rect width="30" height="20" fill="#f00"/><rect width="12" height="20" fill="#060"/><circle cx="12" cy="10" r="3.6" fill="#ff0"/><circle cx="12" cy="10" r="2.2" fill="#f00"/></svg><span class="lc">PT</span><svg class="caret" viewBox="0 0 10 6" width="9" height="6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button><ul class="lang-list" id="lang-list-1" hidden><li><a href="/" data-lang="en" hreflang="en" lang="en" title="United States (English)" aria-label="United States (English)"><svg class="flag" viewBox="0 0 30 20" width="20" height="14" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path d="M0 0h30v1.54H0zm0 3.08h30v1.54H0zm0 3.08h30v1.54H0zm0 3.08h30v1.54H0zm0 3.08h30v1.54H0zm0 3.08h30v1.54H0zm0 3.08h30V20H0z" fill="#b22234"/><rect width="13" height="10.77" fill="#3c3b6e"/></svg><span class="lc">EN</span></a></li><li><a href="/pt/" data-lang="pt" hreflang="pt-PT" lang="pt-PT" aria-current="true" title="Portugal (Português)" aria-label="Portugal (Português)"><svg class="flag" viewBox="0 0 30 20" width="20" height="14" aria-hidden="true"><rect width="30" height="20" fill="#f00"/><rect width="12" height="20" fill="#060"/><circle cx="12" cy="10" r="3.6" fill="#ff0"/><circle cx="12" cy="10" r="2.2" fill="#f00"/></svg><span class="lc">PT</span></a></li><li><a href="/fr/" data-lang="fr" hreflang="fr" lang="fr" title="France (Français)" aria-label="France (Français)"><svg class="flag" viewBox="0 0 30 20" width="20" height="14" aria-hidden="true"><rect width="30" height="20" fill="#ef4135"/><rect width="20" height="20" fill="#fff"/><rect width="10" height="20" fill="#0055a4"/></svg><span class="lc">FR</span></a></li><li><a href="/es/" data-lang="es" hreflang="es" lang="es" title="España (Español)" aria-label="España (Español)"><svg class="flag" viewBox="0 0 30 20" width="20" height="14" aria-hidden="true"><rect width="30" height="20" fill="#aa151b"/><rect y="5" width="30" height="10" fill="#f1bf00"/></svg><span class="lc">ES</span></a></li></ul></div>
@@ -53,6 +53,7 @@
     <span>Séries de sermões</span><span>Diapositivos de louvor</span><span>Design para eventos</span><span>Redes sociais</span><span>Ministério de jovens</span><span>Ministério infantil</span><span>Boletins</span><span>Faixas e sinalética</span><span>Logótipos e identidade</span><span>Sites para igrejas</span>
     <span aria-hidden="true">Séries de sermões</span><span aria-hidden="true">Diapositivos de louvor</span><span aria-hidden="true">Design para eventos</span><span aria-hidden="true">Redes sociais</span><span aria-hidden="true">Ministério de jovens</span><span aria-hidden="true">Ministério infantil</span><span aria-hidden="true">Boletins</span><span aria-hidden="true">Faixas e sinalética</span><span aria-hidden="true">Logótipos e identidade</span><span aria-hidden="true">Sites para igrejas</span>
   </div>
+  <button type="button" class="mq-pause" aria-pressed="false" data-pause="Pausar a lista" data-play="Retomar a lista" aria-label="Pausar a lista"><span class="mq-ico" aria-hidden="true"></span></button>
 </section>
 
 <section id="services" class="sec">
@@ -101,7 +102,7 @@
         <p class="price"><span class="amt">€390</span>/mês</p><!-- PLACEHOLDER price -->
         <p>Conteúdo semanal consistente para os seus canais.</p>
         <ul><li>8 publicações por semana e stories</li><li>Imagens de versículos e avisos</li><li>1 pedido ativo de cada vez</li><li class="no">Site não incluído</li></ul>
-        <a href="#contact" data-plan="social" class="btn btn-ghost">Começar</a>
+        <a href="#contact" data-plan="social" class="btn btn-ghost"><span class="btn-label">Começar</span><span class="btn-plan">Social Media</span></a>
       </article>
       <article class="plan popular">
         <span class="badge">Mais popular</span>
@@ -109,14 +110,14 @@
         <p class="price"><span class="amt">€490</span>/mês</p><!-- PLACEHOLDER price -->
         <p>Tudo o que os seus domingos e eventos precisam.</p>
         <ul><li>Pedidos de design ilimitados</li><li>Séries de sermões, diapositivos, eventos, impressão</li><li>Imagens para redes sociais</li><li>Site gratuito para a igreja (ou atualizações gratuitas)</li></ul>
-        <a href="#contact" data-plan="unlimited" class="btn">Começar</a>
+        <a href="#contact" data-plan="unlimited" class="btn"><span class="btn-label">Começar</span><span class="btn-plan">Unlimited Graphics</span></a>
       </article>
       <article class="plan">
         <h3>Pro</h3>
         <p class="price"><span class="amt">€590</span>/mês</p><!-- PLACEHOLDER price -->
         <p>Para igrejas em crescimento ou com vários locais.</p>
         <ul><li>Tudo o que o Unlimited inclui</li><li>2 pedidos ativos de cada vez</li><li>Entrega prioritária</li><li>Site gratuito + atualizações contínuas</li></ul>
-        <a href="#contact" data-plan="pro" class="btn btn-ghost">Começar</a>
+        <a href="#contact" data-plan="pro" class="btn btn-ghost"><span class="btn-label">Começar</span><span class="btn-plan">Pro</span></a>
       </article>
     </div>
     <p class="secure">🔒 Pagamento seguro com Stripe · Faturação mensal em euros · Cancele quando quiser · Garantia de 14 dias sem risco</p>
@@ -143,14 +144,14 @@
     <div class="table-wrap">
     <table>
       <caption class="sr">Comparação da origem.dev com outras opções</caption>
-      <thead><tr><th scope="col"></th><th scope="col" class="us">origem.dev</th><th scope="col">Designer interno</th><th scope="col">Freelancers</th><th scope="col">Agências</th><th scope="col">Ferramentas DIY</th></tr></thead>
+      <thead><tr><th scope="col"><span class="sr">Característica</span></th><th scope="col" class="us">origem.dev</th><th scope="col">Designer interno</th><th scope="col">Freelancers</th><th scope="col">Agências</th><th scope="col">Ferramentas DIY</th></tr></thead>
       <tbody>
-        <tr><th scope="row">Custo fixo e previsível</th><td class="us">✓</td><td>Salário + benefícios</td><td>Por projeto</td><td>Avenças elevadas</td><td>✓</td></tr>
-        <tr><th scope="row">Entrega rápida</th><td class="us">✓</td><td>✓</td><td>Varia</td><td>Lenta</td><td>O seu tempo</td></tr>
-        <tr><th scope="row">Conhece a vida da igreja</th><td class="us">✓</td><td>✓</td><td>Varia</td><td>Raramente</td><td>—</td></tr>
-        <tr><th scope="row">Revisões ilimitadas</th><td class="us">✓</td><td>✓</td><td>Limitadas</td><td>Limitadas</td><td>—</td></tr>
-        <tr><th scope="row">Site gratuito para a igreja (Unlimited e Pro)</th><td class="us">✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-        <tr><th scope="row">Cancele quando quiser</th><td class="us">✓</td><td>—</td><td>✓</td><td>Contratos</td><td>✓</td></tr>
+        <tr><th scope="row">Custo fixo e previsível</th><td class="us"><span aria-hidden="true">✓</span><span class="sr">Incluído</span></td><td>Salário + benefícios</td><td>Por projeto</td><td>Avenças elevadas</td><td><span aria-hidden="true">✓</span><span class="sr">Incluído</span></td></tr>
+        <tr><th scope="row">Entrega rápida</th><td class="us"><span aria-hidden="true">✓</span><span class="sr">Incluído</span></td><td><span aria-hidden="true">✓</span><span class="sr">Incluído</span></td><td>Varia</td><td>Lenta</td><td>O seu tempo</td></tr>
+        <tr><th scope="row">Conhece a vida da igreja</th><td class="us"><span aria-hidden="true">✓</span><span class="sr">Incluído</span></td><td><span aria-hidden="true">✓</span><span class="sr">Incluído</span></td><td>Varia</td><td>Raramente</td><td><span aria-hidden="true">—</span><span class="sr">Não incluído</span></td></tr>
+        <tr><th scope="row">Revisões ilimitadas</th><td class="us"><span aria-hidden="true">✓</span><span class="sr">Incluído</span></td><td><span aria-hidden="true">✓</span><span class="sr">Incluído</span></td><td>Limitadas</td><td>Limitadas</td><td><span aria-hidden="true">—</span><span class="sr">Não incluído</span></td></tr>
+        <tr><th scope="row">Site gratuito para a igreja (Unlimited e Pro)</th><td class="us"><span aria-hidden="true">✓</span><span class="sr">Incluído</span></td><td><span aria-hidden="true">—</span><span class="sr">Não incluído</span></td><td><span aria-hidden="true">—</span><span class="sr">Não incluído</span></td><td><span aria-hidden="true">—</span><span class="sr">Não incluído</span></td><td><span aria-hidden="true">—</span><span class="sr">Não incluído</span></td></tr>
+        <tr><th scope="row">Cancele quando quiser</th><td class="us"><span aria-hidden="true">✓</span><span class="sr">Incluído</span></td><td><span aria-hidden="true">—</span><span class="sr">Não incluído</span></td><td><span aria-hidden="true">✓</span><span class="sr">Incluído</span></td><td>Contratos</td><td><span aria-hidden="true">✓</span><span class="sr">Incluído</span></td></tr>
       </tbody>
     </table>
     </div>
@@ -218,6 +219,6 @@
     <p class="small">© <span id="yr">2026</span> origem.dev. Todos os direitos reservados.</p>
   </div>
 </footer>
-<script src="/script.js?v=b4346b0f"></script>
+<script src="/script.js?v=15600176"></script>
 </body>
 </html>

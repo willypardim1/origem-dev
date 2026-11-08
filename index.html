@@ -8,7 +8,7 @@
 <meta name="description" content="Subscription graphic design for American churches and ministries. Unlimited requests, fast turnaround, and a free custom church website with every plan.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=d7dbdf68">
+<link rel="stylesheet" href="/styles.css?v=9023d59a">
 <link rel="canonical" href="https://origem.dev/">
 <link rel="alternate" hreflang="en" href="https://origem.dev/">
 <link rel="alternate" hreflang="pt-PT" href="https://origem.dev/pt/">
@@ -23,7 +23,7 @@
   <div class="wrap nav-in">
     <!-- PLACEHOLDER: replace text logo with your logo image -->
     <a href="#" class="logo" aria-label="origem.dev home"><span class="dot"></span>origem<span>.dev</span></a>
-    <button class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Open menu">☰</button>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Open menu" data-label-open="Open menu" data-label-close="Close menu"><span class="burger" aria-hidden="true"></span></button>
     <nav id="menu" aria-label="Main">
       <a href="#services">Services</a><a href="#website">Free Website</a><a href="#pricing">Pricing</a><a href="#process">Process</a><a href="#faq">FAQ</a>
       <a href="#contact" class="btn btn-sm">Book a Free Call</a>
@@ -53,6 +53,7 @@
     <span>Sermon Series</span><span>Worship Slides</span><span>Event Graphics</span><span>Social Media</span><span>Youth Ministry</span><span>Kids Ministry</span><span>Bulletins</span><span>Banners &amp; Signage</span><span>Logos &amp; Branding</span><span>Church Websites</span>
     <span aria-hidden="true">Sermon Series</span><span aria-hidden="true">Worship Slides</span><span aria-hidden="true">Event Graphics</span><span aria-hidden="true">Social Media</span><span aria-hidden="true">Youth Ministry</span><span aria-hidden="true">Kids Ministry</span><span aria-hidden="true">Bulletins</span><span aria-hidden="true">Banners &amp; Signage</span><span aria-hidden="true">Logos &amp; Branding</span><span aria-hidden="true">Church Websites</span>
   </div>
+  <button type="button" class="mq-pause" aria-pressed="false" data-pause="Pause scrolling list" data-play="Resume scrolling list" aria-label="Pause scrolling list"><span class="mq-ico" aria-hidden="true"></span></button>
 </section>
 
 <section id="services" class="sec">
@@ -101,7 +102,7 @@
         <p class="price"><span class="amt">$390</span>/mo</p><!-- PLACEHOLDER price -->
         <p>Consistent weekly content for your channels.</p>
         <ul><li>8 social posts per week &amp; stories</li><li>Verse &amp; announcement graphics</li><li>1 active request at a time</li><li class="no">No website included</li></ul>
-        <a href="#contact" data-plan="social" class="btn btn-ghost">Get started</a>
+        <a href="#contact" data-plan="social" class="btn btn-ghost"><span class="btn-label">Get started</span><span class="btn-plan">Social Media</span></a>
       </article>
       <article class="plan popular">
         <span class="badge">Most popular</span>
@@ -109,14 +110,14 @@
         <p class="price"><span class="amt">$490</span>/mo</p><!-- PLACEHOLDER price -->
         <p>Everything your Sundays and events need.</p>
         <ul><li>Unlimited design requests</li><li>Sermon series, slides, events, print</li><li>Social media graphics</li><li>Free church website (or free updates)</li></ul>
-        <a href="#contact" data-plan="unlimited" class="btn">Get started</a>
+        <a href="#contact" data-plan="unlimited" class="btn"><span class="btn-label">Get started</span><span class="btn-plan">Unlimited Graphics</span></a>
       </article>
       <article class="plan">
         <h3>Pro</h3>
         <p class="price"><span class="amt">$590</span>/mo</p><!-- PLACEHOLDER price -->
         <p>For growing or multi-campus churches.</p>
         <ul><li>Everything in Unlimited</li><li>2 active requests at a time</li><li>Priority turnaround</li><li>Free website + ongoing updates</li></ul>
-        <a href="#contact" data-plan="pro" class="btn btn-ghost">Get started</a>
+        <a href="#contact" data-plan="pro" class="btn btn-ghost"><span class="btn-label">Get started</span><span class="btn-plan">Pro</span></a>
       </article>
     </div>
     <p class="secure">🔒 Secure checkout powered by Stripe · Billed monthly in USD · Cancel anytime · 14-day risk-free guarantee</p>
@@ -143,14 +144,14 @@
     <div class="table-wrap">
     <table>
       <caption class="sr">Comparison of origem.dev with other options</caption>
-      <thead><tr><th scope="col"></th><th scope="col" class="us">origem.dev</th><th scope="col">In-house designer</th><th scope="col">Freelancers</th><th scope="col">Agencies</th><th scope="col">DIY tools</th></tr></thead>
+      <thead><tr><th scope="col"><span class="sr">Feature</span></th><th scope="col" class="us">origem.dev</th><th scope="col">In-house designer</th><th scope="col">Freelancers</th><th scope="col">Agencies</th><th scope="col">DIY tools</th></tr></thead>
       <tbody>
-        <tr><th scope="row">Flat, predictable cost</th><td class="us">✓</td><td>Salary + benefits</td><td>Per project</td><td>High retainers</td><td>✓</td></tr>
-        <tr><th scope="row">Fast turnaround</th><td class="us">✓</td><td>✓</td><td>Varies</td><td>Slow</td><td>Your time</td></tr>
-        <tr><th scope="row">Understands church life</th><td class="us">✓</td><td>✓</td><td>Varies</td><td>Rarely</td><td>—</td></tr>
-        <tr><th scope="row">Unlimited revisions</th><td class="us">✓</td><td>✓</td><td>Limited</td><td>Limited</td><td>—</td></tr>
-        <tr><th scope="row">Free church website (Unlimited &amp; Pro)</th><td class="us">✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-        <tr><th scope="row">Cancel anytime</th><td class="us">✓</td><td>—</td><td>✓</td><td>Contracts</td><td>✓</td></tr>
+        <tr><th scope="row">Flat, predictable cost</th><td class="us"><span aria-hidden="true">✓</span><span class="sr">Included</span></td><td>Salary + benefits</td><td>Per project</td><td>High retainers</td><td><span aria-hidden="true">✓</span><span class="sr">Included</span></td></tr>
+        <tr><th scope="row">Fast turnaround</th><td class="us"><span aria-hidden="true">✓</span><span class="sr">Included</span></td><td><span aria-hidden="true">✓</span><span class="sr">Included</span></td><td>Varies</td><td>Slow</td><td>Your time</td></tr>
+        <tr><th scope="row">Understands church life</th><td class="us"><span aria-hidden="true">✓</span><span class="sr">Included</span></td><td><span aria-hidden="true">✓</span><span class="sr">Included</span></td><td>Varies</td><td>Rarely</td><td><span aria-hidden="true">—</span><span class="sr">Not included</span></td></tr>
+        <tr><th scope="row">Unlimited revisions</th><td class="us"><span aria-hidden="true">✓</span><span class="sr">Included</span></td><td><span aria-hidden="true">✓</span><span class="sr">Included</span></td><td>Limited</td><td>Limited</td><td><span aria-hidden="true">—</span><span class="sr">Not included</span></td></tr>
+        <tr><th scope="row">Free church website (Unlimited &amp; Pro)</th><td class="us"><span aria-hidden="true">✓</span><span class="sr">Included</span></td><td><span aria-hidden="true">—</span><span class="sr">Not included</span></td><td><span aria-hidden="true">—</span><span class="sr">Not included</span></td><td><span aria-hidden="true">—</span><span class="sr">Not included</span></td><td><span aria-hidden="true">—</span><span class="sr">Not included</span></td></tr>
+        <tr><th scope="row">Cancel anytime</th><td class="us"><span aria-hidden="true">✓</span><span class="sr">Included</span></td><td><span aria-hidden="true">—</span><span class="sr">Not included</span></td><td><span aria-hidden="true">✓</span><span class="sr">Included</span></td><td>Contracts</td><td><span aria-hidden="true">✓</span><span class="sr">Included</span></td></tr>
       </tbody>
     </table>
     </div>
@@ -218,6 +219,6 @@
     <p class="small">© <span id="yr">2026</span> origem.dev. All rights reserved.</p>
   </div>
 </footer>
-<script src="/script.js?v=b4346b0f"></script>
+<script src="/script.js?v=15600176"></script>
 </body>
 </html>

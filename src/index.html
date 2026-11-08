@@ -18,8 +18,8 @@
   <div class="wrap nav-in">
     <!-- PLACEHOLDER: replace text logo with your logo image -->
     <a href="#" class="logo" aria-label="{{nav.home_aria}}"><span class="dot"></span>origem<span>.dev</span></a>
-    <button class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="{{nav.menu_aria}}">☰</button>
-    <nav id="menu" aria-label="Main">
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="{{nav.menu_aria}}" data-label-open="{{nav.menu_aria}}" data-label-close="{{nav.menu_close}}"><span class="burger" aria-hidden="true"></span></button>
+    <nav id="menu" aria-label="{{nav.main}}">
       <a href="#services">{{nav.services}}</a><a href="#website">{{nav.website}}</a><a href="#pricing">{{nav.pricing}}</a><a href="#process">{{nav.process}}</a><a href="#faq">{{nav.faq}}</a>
       <a href="#contact" class="btn btn-sm">{{nav.cta}}</a>
       {{@selector}}
@@ -48,6 +48,7 @@
     <span>{{mq.1}}</span><span>{{mq.2}}</span><span>{{mq.3}}</span><span>{{mq.4}}</span><span>{{mq.5}}</span><span>{{mq.6}}</span><span>{{mq.7}}</span><span>{{mq.8}}</span><span>{{mq.9}}</span><span>{{mq.10}}</span>
     <span aria-hidden="true">{{mq.1}}</span><span aria-hidden="true">{{mq.2}}</span><span aria-hidden="true">{{mq.3}}</span><span aria-hidden="true">{{mq.4}}</span><span aria-hidden="true">{{mq.5}}</span><span aria-hidden="true">{{mq.6}}</span><span aria-hidden="true">{{mq.7}}</span><span aria-hidden="true">{{mq.8}}</span><span aria-hidden="true">{{mq.9}}</span><span aria-hidden="true">{{mq.10}}</span>
   </div>
+  <button type="button" class="mq-pause" aria-pressed="false" data-pause="{{marquee.pause}}" data-play="{{marquee.play}}" aria-label="{{marquee.pause}}"><span class="mq-ico" aria-hidden="true"></span></button>
 </section>
 
 <section id="services" class="sec">
@@ -96,7 +97,7 @@
         <p class="price"><span class="amt">{{price.social}}</span>{{price.per}}</p><!-- PLACEHOLDER price -->
         <p>{{plan.s.desc}}</p>
         <ul><li>{{plan.s.l1}}</li><li>{{plan.s.l2}}</li><li>{{plan.s.l3}}</li><li class="no">{{plan.s.l4}}</li></ul>
-        <a href="#contact" data-plan="social" class="btn btn-ghost">{{plan.cta}}</a>
+        <a href="#contact" data-plan="social" class="btn btn-ghost"><span class="btn-label">{{plan.cta}}</span><span class="btn-plan">Social Media</span></a>
       </article>
       <article class="plan popular">
         <span class="badge">{{plan.badge}}</span>
@@ -104,14 +105,14 @@
         <p class="price"><span class="amt">{{price.unlimited}}</span>{{price.per}}</p><!-- PLACEHOLDER price -->
         <p>{{plan.u.desc}}</p>
         <ul><li>{{plan.u.l1}}</li><li>{{plan.u.l2}}</li><li>{{plan.u.l3}}</li><li>{{plan.u.l4}}</li></ul>
-        <a href="#contact" data-plan="unlimited" class="btn">{{plan.cta}}</a>
+        <a href="#contact" data-plan="unlimited" class="btn"><span class="btn-label">{{plan.cta}}</span><span class="btn-plan">Unlimited Graphics</span></a>
       </article>
       <article class="plan">
         <h3>Pro</h3>
         <p class="price"><span class="amt">{{price.pro}}</span>{{price.per}}</p><!-- PLACEHOLDER price -->
         <p>{{plan.p.desc}}</p>
         <ul><li>{{plan.p.l1}}</li><li>{{plan.p.l2}}</li><li>{{plan.p.l3}}</li><li>{{plan.p.l4}}</li></ul>
-        <a href="#contact" data-plan="pro" class="btn btn-ghost">{{plan.cta}}</a>
+        <a href="#contact" data-plan="pro" class="btn btn-ghost"><span class="btn-label">{{plan.cta}}</span><span class="btn-plan">Pro</span></a>
       </article>
     </div>
     <p class="secure">{{price.secure}}</p>
@@ -138,14 +139,14 @@
     <div class="table-wrap">
     <table>
       <caption class="sr">{{cmp.caption}}</caption>
-      <thead><tr><th scope="col"></th><th scope="col" class="us">origem.dev</th><th scope="col">{{cmp.c2}}</th><th scope="col">{{cmp.c3}}</th><th scope="col">{{cmp.c4}}</th><th scope="col">{{cmp.c5}}</th></tr></thead>
+      <thead><tr><th scope="col"><span class="sr">{{cmp.feature}}</span></th><th scope="col" class="us">origem.dev</th><th scope="col">{{cmp.c2}}</th><th scope="col">{{cmp.c3}}</th><th scope="col">{{cmp.c4}}</th><th scope="col">{{cmp.c5}}</th></tr></thead>
       <tbody>
-        <tr><th scope="row">{{cmp.r1}}</th><td class="us">✓</td><td>{{cmp.salary}}</td><td>{{cmp.perproj}}</td><td>{{cmp.retainers}}</td><td>✓</td></tr>
-        <tr><th scope="row">{{cmp.r2}}</th><td class="us">✓</td><td>✓</td><td>{{cmp.varies}}</td><td>{{cmp.slow}}</td><td>{{cmp.yourtime}}</td></tr>
-        <tr><th scope="row">{{cmp.r3}}</th><td class="us">✓</td><td>✓</td><td>{{cmp.varies}}</td><td>{{cmp.rarely}}</td><td>—</td></tr>
-        <tr><th scope="row">{{cmp.r4}}</th><td class="us">✓</td><td>✓</td><td>{{cmp.limited}}</td><td>{{cmp.limited}}</td><td>—</td></tr>
-        <tr><th scope="row">{{cmp.r5}}</th><td class="us">✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-        <tr><th scope="row">{{cmp.r6}}</th><td class="us">✓</td><td>—</td><td>✓</td><td>{{cmp.contracts}}</td><td>✓</td></tr>
+        <tr><th scope="row">{{cmp.r1}}</th><td class="us"><span aria-hidden="true">✓</span><span class="sr">{{cmp.yes}}</span></td><td>{{cmp.salary}}</td><td>{{cmp.perproj}}</td><td>{{cmp.retainers}}</td><td><span aria-hidden="true">✓</span><span class="sr">{{cmp.yes}}</span></td></tr>
+        <tr><th scope="row">{{cmp.r2}}</th><td class="us"><span aria-hidden="true">✓</span><span class="sr">{{cmp.yes}}</span></td><td><span aria-hidden="true">✓</span><span class="sr">{{cmp.yes}}</span></td><td>{{cmp.varies}}</td><td>{{cmp.slow}}</td><td>{{cmp.yourtime}}</td></tr>
+        <tr><th scope="row">{{cmp.r3}}</th><td class="us"><span aria-hidden="true">✓</span><span class="sr">{{cmp.yes}}</span></td><td><span aria-hidden="true">✓</span><span class="sr">{{cmp.yes}}</span></td><td>{{cmp.varies}}</td><td>{{cmp.rarely}}</td><td><span aria-hidden="true">—</span><span class="sr">{{cmp.no}}</span></td></tr>
+        <tr><th scope="row">{{cmp.r4}}</th><td class="us"><span aria-hidden="true">✓</span><span class="sr">{{cmp.yes}}</span></td><td><span aria-hidden="true">✓</span><span class="sr">{{cmp.yes}}</span></td><td>{{cmp.limited}}</td><td>{{cmp.limited}}</td><td><span aria-hidden="true">—</span><span class="sr">{{cmp.no}}</span></td></tr>
+        <tr><th scope="row">{{cmp.r5}}</th><td class="us"><span aria-hidden="true">✓</span><span class="sr">{{cmp.yes}}</span></td><td><span aria-hidden="true">—</span><span class="sr">{{cmp.no}}</span></td><td><span aria-hidden="true">—</span><span class="sr">{{cmp.no}}</span></td><td><span aria-hidden="true">—</span><span class="sr">{{cmp.no}}</span></td><td><span aria-hidden="true">—</span><span class="sr">{{cmp.no}}</span></td></tr>
+        <tr><th scope="row">{{cmp.r6}}</th><td class="us"><span aria-hidden="true">✓</span><span class="sr">{{cmp.yes}}</span></td><td><span aria-hidden="true">—</span><span class="sr">{{cmp.no}}</span></td><td><span aria-hidden="true">✓</span><span class="sr">{{cmp.yes}}</span></td><td>{{cmp.contracts}}</td><td><span aria-hidden="true">✓</span><span class="sr">{{cmp.yes}}</span></td></tr>
       </tbody>
     </table>
     </div>
