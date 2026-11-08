@@ -30,8 +30,41 @@ if (document.documentElement.lang === 'en' && document.querySelector('[data-plan
   window.origemGeo.country().then(cc => { if (window.origemGeo.isEurope(cc)) applyCurrency('EUR'); }).catch(() => {});
 }
 const b=document.querySelector('.menu-btn'),m=document.getElementById('menu');
-if(b){b.addEventListener('click',()=>{const o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
-m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{m.classList.remove('open');b.setAttribute('aria-expanded',false)}));}
+function mobileNav(){return window.matchMedia('(max-width: 1199px)').matches}
+function setMenu(open, focusBtn){
+  if(!b||!m)return;
+  m.classList.toggle('open',!!open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  const openLabel=b.getAttribute('data-label-open'), closeLabel=b.getAttribute('data-label-close');
+  if(open&&closeLabel)b.setAttribute('aria-label',closeLabel);
+  else if(openLabel)b.setAttribute('aria-label',openLabel);
+  document.body.classList.toggle('nav-open',!!open&&mobileNav());
+  if(mobileNav()&&!open)m.setAttribute('inert',''); else m.removeAttribute('inert');
+  if(focusBtn)b.focus();
+}
+if(b&&m){
+  setMenu(false);
+  b.addEventListener('click',()=>setMenu(b.getAttribute('aria-expanded')!=='true'));
+  m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+  document.addEventListener('click',e=>{
+    if(!m.classList.contains('open'))return;
+    if(e.target.closest&&(e.target.closest('.menu-btn')||e.target.closest('#menu')))return;
+    setMenu(false);
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key!=='Escape'||!m.classList.contains('open'))return;
+    if(document.querySelector('.lang-btn[aria-expanded="true"]'))return;
+    setMenu(false,true);
+  });
+  const mql=window.matchMedia('(max-width: 1199px)');
+  if(mql.addEventListener)mql.addEventListener('change',()=>setMenu(false));
+}
+const mqBtn=document.querySelector('.mq-pause'), mq=document.querySelector('.marquee');
+if(mqBtn&&mq)mqBtn.addEventListener('click',()=>{
+  const paused=mq.classList.toggle('is-paused');
+  mqBtn.setAttribute('aria-pressed',paused?'true':'false');
+  mqBtn.setAttribute('aria-label',paused?mqBtn.getAttribute('data-play'):mqBtn.getAttribute('data-pause'));
+});
 const y=document.getElementById('yr');if(y)y.textContent=new Date().getFullYear();
 
 const nv=document.querySelector('.nav');if(nv){const sc=()=>nv.classList.toggle('scrolled',scrollY>30);addEventListener('scroll',sc,{passive:true});sc();}
